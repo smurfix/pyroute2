@@ -1030,10 +1030,10 @@ class NetlinkSocket(NetlinkMixin):
             self.epid = self.pid + (self.port << 22)
             self._sock.bind((self.epid, self.groups))
         else:
-            for port in range(1024):
+            for port in range(40000,40100):
                 try:
                     self.port = port
-                    self.epid = self.pid + (self.port << 22)
+                    self.epid = self.pid + (self.port << 16)
                     self._sock.bind((self.epid, self.groups))
                     break
                 except Exception:

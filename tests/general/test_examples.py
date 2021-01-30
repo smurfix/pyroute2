@@ -91,15 +91,10 @@ class TestExamples(object):
 
         c.join()
 
-        if any((client_error, server_error)):
-            print("client error:")
-            print(client_error)
-            print("server error:")
-            print(server_error)
-            e = RuntimeError()
-            e.client_error = client_error
-            e.server_error = server_error
-            raise e
+        if server_error:
+            raise server_error
+        if client_error:
+            raise client_error
 
     @skip_if_not_supported
     def test_create_bond(self):

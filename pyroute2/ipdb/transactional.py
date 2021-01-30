@@ -439,7 +439,7 @@ class Transactional(Dotkeys):
             for key in self._linked_sets:
                 if tx[key] in self[key].links:
                     self[key].disconnect(tx[key])
-            for (key, value) in self.items():
+            for (key, value) in list(self.items()):
                 if isinstance(value, Transactional):
                     try:
                         value.drop(tx.uid)

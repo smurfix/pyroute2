@@ -80,7 +80,7 @@ class TestConntrack(BasicSetup):
         cpus = [x for x in (subprocess
                             .check_output('cat /proc/cpuinfo', shell=True)
                             .split(b'\n')) if x.startswith(b'processor')]
-        assert len(stat) == len(cpus)
+        assert len(stat) >= len(cpus)
 
     def test_count_dump(self):
         # These values should be pretty the same, but the call is not atomic
